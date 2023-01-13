@@ -1,0 +1,36 @@
+<%- include("header") -%>
+
+  <div class="box" id="heading">
+    <h1> <%=Today%> </h1>
+  </div>
+   
+
+  <div class="box">
+    
+    <form action="/delete" method="post">
+        <%  newListItem.forEach(function(item){ %>
+          <div class="item">
+            <!-- the value is to get the id of the iterated object -->
+            <input type="checkbox" name="checkbox" value="<%=item._id%>" onChange="this.form.submit()">
+            <p> <%= item.name %> </p>
+          </div>
+          <!-- the value can be used to tap into the data in the input fi -->
+          <input type="hidden" name="listName"  > </input>
+          <%   }) %>
+
+        </form>
+
+
+        <!-- getting a data from the frontend and posting it to the server with form -->
+
+        <form class="item" action="/" method="post">
+          <!-- name in the input field will be used to send to the server side in node js -->
+          <input type="text" name="newItem" placeholder="New Item" autocomplete="off" >
+          <!-- once the button its click on, it submit the input to the post method -->
+          <button type="submit" name="list" value="listTitle" >+</button>
+        </form>
+
+  </div>
+
+  <%- include("footer") -%>
+
